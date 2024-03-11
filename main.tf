@@ -1,4 +1,10 @@
 terraform {
+    required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.20.0"
+      }
+  }
 
     cloud {
     organization = "mrrb"
@@ -14,9 +20,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-
-
-
 module "apache" {
   source  = "TAREK199/apache-sample/aws"
   version = "1.0.0"
@@ -25,6 +28,10 @@ module "apache" {
   public_key      = var.public_key
   instance_type   = var.instance_type
   server_name     = var.server_name
+}
+
+resource "aws_s3_bucket" "vsc-bucket"{
+  bucket = var.bucket_name 
 }
 
 output "public_ip" {

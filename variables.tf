@@ -18,3 +18,8 @@ variable "instance_type" {
 variable "server_name" {
     type = string
 }
+
+variable "bucket_name" {
+    type = string
+    default = "vsc-mrrb-00112"
+}
