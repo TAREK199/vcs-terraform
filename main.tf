@@ -1,5 +1,13 @@
 terraform {
 
+    cloud {
+    organization = "mrrb"
+
+    workspaces {
+      name = "vcs-terraform"
+    }
+  }
+
 }
 
 provider "aws" {
